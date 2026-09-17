@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Client Powered</title>
+<meta name="description" content="Client Powered is a coming soon CRM for small accounting firms. It will track what each client still owes you and follow up automatically. Join the waitlist.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-alt: #f4f6f8;
+    --text: #12181f;
+    --text-muted: #33404a;
+    --border: #ccd3d9;
+    --accent: #0b3d63;
+    --accent-text: #ffffff;
+    --focus: #b3480f;
+    --circle-1: #0b3d63;
+    --circle-2: #0f5c46;
+    --circle-3: #8a3d00;
+    --circle-text: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121417;
+      --bg-alt: #1c2126;
+      --text: #f2f4f6;
+      --text-muted: #cbd3d9;
+      --border: #3a434b;
+      --accent: #6fb3ff;
+      --accent-text: #08131f;
+      --focus: #ffb066;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 400;
+    text-align: left;
+    overflow-x: hidden;
+  }
+
+  main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  section {
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  section:last-of-type { border-bottom: none; }
+
+  h1 {
+    font-size: 34px;
+    line-height: 1.3;
+    margin: 0 0 16px 0;
+  }
+
+  h2 {
+    font-size: 26px;
+    line-height: 1.35;
+    margin: 0 0 20px 0;
+  }
+
+  p {
+    margin: 0 0 16px 0;
+    line-height: 2.0;
+  }
+
+  .subhead {
+    font-size: 20px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 52ch;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 16px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+
+  .btn {
+    display: inline-block;
+    min-height: 44px;
+    padding: 12px 28px;
+    font-size: 18px;
+    font-weight: 600;
+    background: var(--accent);
+    color: var(--accent-text);
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: 1.4;
+  }
+
+  .btn:hover { opacity: 0.9; }
+
+  a { color: var(--accent); }
+
+  :focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  ul.plain {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .card {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+
+  .steps {
+    counter-reset: step;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .steps li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 52px;
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accent-text);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 8px;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 600;
+  }
+
+  input, select {
+    font-size: 18px;
+    font-family: inherit;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    min-height: 44px;
+  }
+
+  #form-status {
+    font-weight: 600;
+    min-height: 24px;
+  }
+
+  .thanks {
+    font-size: 20px;
+    line-height: 1.6;
+  }
+
+  .team-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .team-card {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .initials {
+    flex: 0 0 auto;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--circle-text);
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .team-card:nth-of-type(1) .initials { background: var(--circle-1); }
+  .team-card:nth-of-type(2) .initials { background: var(--circle-2); }
+  .team-card:nth-of-type(3) .initials { background: var(--circle-3); }
+
+  .team-name {
+    font-weight: 700;
+    margin: 0 0 4px 0;
+  }
+
+  .team-bio {
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  footer p {
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  footer a {
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <section id="hero">
+    <span class="badge">Coming soon</span>
+    <h1>Stop chasing clients for documents.</h1>
+    <p class="subhead">Client Powered is a CRM built for small accounting firms. It will track what each client still owes you, and follow up for you automatically.</p>
+    <a class="btn" href="#waitlist">Join the waitlist</a>
+  </section>
+
+  <section id="problem">
+    <h2>You know this feeling</h2>
+    <ul class="plain">
+      <li class="card">The third email asking for one bank statement.</li>
+      <li class="card">Payroll hours land the morning payroll is due.</li>
+      <li class="card">Tax season stalls on a missing 1099.</li>
+    </ul>
+  </section>
+
+  <section id="how">
+    <h2>How it would work</h2>
+    <ol class="steps">
+      <li>You set what each client still owes you.</li>
+      <li>Client Powered sends the reminders.</li>
+      <li>Documents land in one place, tied to the client.</li>
+    </ol>
+  </section>
+
+  <section id="waitlist">
+    <h2>Join the waitlist</h2>
+    <p>Be the first to know when Client Powered is ready.</p>
+    <form id="waitlist-form" novalidate>
+      <label>Your name <input name="name" required maxlength="200" autocomplete="name"></label>
+      <label>Work email <input name="email" type="email" required maxlength="320" autocomplete="email"></label>
+      <label>Firm name <input name="firm_name" maxlength="200" autocomplete="organization"></label>
+      <label>Firm size
+        <select name="firm_size" required>
+          <option value="">Choose one</option>
+          <option>Just me</option><option>2 to 5</option><option>6 to 10</option><option>More than 10</option>
+        </select>
+      </label>
+      <button type="submit" class="btn">Join the waitlist</button>
+      <p id="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <section id="team">
+    <h2>Who's building this</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="initials">JB</div>
+        <div>
+          <p class="team-name">John Bowman, Founder</p>
+          <p class="team-bio">Owns a small accounting firm and is building Client Powered to end the document chase he lives with every tax season.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="initials">JB</div>
+        <div>
+          <p class="team-name">James Bowman</p>
+          <p class="team-bio">Program manager with 10+ years running delivery at enGen/Highmark Health and BNY Mellon.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="initials">CA</div>
+        <div>
+          <p class="team-name">Charlie Anderson, CTO</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Questions? Email <a href="mailto:hello@clientpowered.com">hello@clientpowered.com</a>.</p>
+    <p>We only use your email to tell you when we launch.</p>
+  </footer>
+
+</main>
+
+<script>
+const SUPABASE_URL = "https://hevlnslzcsnodgtgydms.supabase.co";
+const PUBLIC_KEY = "sb_publishable_ZtB7ipEtexBYMNoWgIsOIQ_prLDOBC1";
+const SEND_BEARER = false;
+const DUPLICATE_CODE = 409;
+const CONTACT = "hello@clientpowered.com";
+
+const form = document.getElementById("waitlist-form");
+const status = document.getElementById("form-status");
+const button = form.querySelector("button");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  if (!form.reportValidity()) return;
+  const data = Object.fromEntries(new FormData(form));
+  const body = {
+    name: data.name.trim(),
+    email: data.email.trim(),
+    firm_name: data.firm_name.trim() || null,
+    firm_size: data.firm_size,
+  };
+  const headers = { apikey: PUBLIC_KEY, "Content-Type": "application/json", Prefer: "return=minimal" };
+  if (SEND_BEARER) headers.Authorization = "Bearer " + PUBLIC_KEY;
+  button.disabled = true;
+  status.textContent = "Adding you...";
+  try {
+    const res = await fetch(SUPABASE_URL + "/rest/v1/waitlist", { method: "POST", headers, body: JSON.stringify(body) });
+    if (res.status === 201 || res.status === DUPLICATE_CODE) {
+      form.replaceChildren(Object.assign(document.createElement("p"), {
+        className: "thanks",
+        textContent: "You're on the list. We'll email you when Client Powered is ready.",
+      }));
+      return;
+    }
+    throw new Error("HTTP " + res.status);
+  } catch (err) {
+    button.disabled = false;
+    status.textContent = "That didn't go through. Please try again, or email " + CONTACT + ".";
+  }
+});
+</script>
+</body>
+</html>
