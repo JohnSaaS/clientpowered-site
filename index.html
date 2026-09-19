@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.className='js-anim';</script>
 <title>Client Powered</title>
 <meta name="description" content="Client Powered is a private beta CRM for small accounting firms. It chases clients for documents automatically and gives every client one record. Request beta access.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -97,11 +99,6 @@
     font-size: 19px; color: var(--ink); text-decoration: none;
     letter-spacing: -0.035em; margin-right: auto;
     display: inline-flex; align-items: center; gap: 9px;
-  }
-  .wordmark::before {
-    content: ""; width: 24px; height: 24px; border-radius: 7px;
-    background: linear-gradient(135deg, var(--brand) 0%, var(--teal) 100%);
-    box-shadow: var(--shadow-sm);
   }
   .nav-links { display: flex; gap: 26px; }
   .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 15px; font-weight: 500; }
@@ -404,10 +401,88 @@
   .badge { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.34); }
   .badge::before { background: #FDE047; box-shadow: 0 0 0 3px rgba(253,224,71,.3); }
 
-  .wordmark::before { background: linear-gradient(135deg, #4F46E5 0%, #0EA5E9 55%, #14B8A6 100%); }
 
   #hero .btn { color: var(--brand-deep); }
   .cta-banner .btn, .footer-cta .btn { color: var(--brand-deep); }
+
+  /* ---------- logo mark ---------- */
+  .mark { width: 26px; height: 26px; flex: none; }
+  .mark-tile { fill: url(#cp-grad); }
+  .mark-ink { stroke: #fff; }
+  .mark-fill { fill: #fff; }
+  .footer-wordmark { color: #fff; margin-right: 0; margin-bottom: 30px; font-size: 18px; }
+  .footer-wordmark .mark-tile { fill: rgba(255,255,255,.16); }
+  .footer-wordmark:hover { text-decoration: none; }
+
+  /* ---------- hero illustration ---------- */
+  .mock-panel { padding: 20px 22px 22px; }
+  .mock-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .mock-avatar {
+    flex: none; width: 40px; height: 40px; border-radius: 11px;
+    background: linear-gradient(135deg, var(--c-indigo), var(--c-cyan));
+    color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .mock-head-text { display: flex; flex-direction: column; }
+  .mock-client { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: -0.02em; }
+  .mock-sub { font-size: 13px; color: var(--ink-soft); }
+  .mock-progress { margin-bottom: 16px; }
+  .mock-progress-top { display: flex; justify-content: space-between; font-size: 12.5px; color: var(--ink-soft); margin-bottom: 7px; }
+  .mock-count { font-weight: 600; color: var(--ink); }
+  .mock-track { display: block; height: 7px; border-radius: 99px; background: var(--surface-3); overflow: hidden; }
+  .mock-fill {
+    display: block; height: 100%; width: 33%; border-radius: 99px;
+    background: linear-gradient(90deg, var(--c-indigo), var(--c-teal));
+  }
+  .mock-list li { display: flex; align-items: center; gap: 11px; padding: 11px 0; font-size: 14px; }
+  .mock-item { display: flex; flex-direction: column; min-width: 0; margin-right: auto; }
+  .mock-name { font-weight: 500; }
+  .mock-meta { font-size: 12px; color: var(--ink-soft); margin-top: 1px; }
+  .mock-pill {
+    flex: none; font-size: 11px; font-weight: 700; letter-spacing: .03em;
+    text-transform: uppercase; padding: 4px 9px; border-radius: 6px;
+    font-family: var(--font-display);
+  }
+  .mock-pill-wait { background: var(--t-amber); color: var(--c-amber); }
+  .mock-pill-done { background: var(--t-teal); color: var(--c-teal); }
+  .mock-foot {
+    display: flex; align-items: center; gap: 8px;
+    margin: 12px 0 0; padding-top: 13px; border-top: 1px solid var(--line);
+    font-size: 12.5px; color: var(--ink-soft);
+  }
+  .mock-foot-dot {
+    width: 7px; height: 7px; border-radius: 50%; flex: none;
+    background: var(--c-teal); box-shadow: 0 0 0 3px var(--t-teal);
+  }
+
+  /* ---------- scroll reveal ---------- */
+  html.js-anim main section:not(#hero) > .wrap > .copy,
+  html.js-anim main section:not(#hero) > .wrap > .photo,
+  html.js-anim .card,
+  html.js-anim .integration-tile,
+  html.js-anim .steps > li,
+  html.js-anim .team-card,
+  html.js-anim details,
+  html.js-anim .cta-banner .wrap > * {
+    opacity: 0; transform: translateY(22px);
+  }
+  html.js-anim .is-in {
+    opacity: 1; transform: none;
+    transition: opacity .6s ease, transform .6s cubic-bezier(.22,.72,.3,1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html.js-anim main section:not(#hero) > .wrap > .copy,
+    html.js-anim main section:not(#hero) > .wrap > .photo,
+    html.js-anim .card,
+    html.js-anim .integration-tile,
+    html.js-anim .steps > li,
+    html.js-anim .team-card,
+    html.js-anim details,
+    html.js-anim .cta-banner .wrap > * {
+      opacity: 1 !important; transform: none !important;
+    }
+  }
 
   /* ---------- responsive ---------- */
   @media (max-width: 980px) {
@@ -439,10 +514,11 @@
 </style>
 </head>
 <body>
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><defs><linearGradient id="cp-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4F46E5"/><stop offset=".55" stop-color="#3B82F6"/><stop offset="1" stop-color="#14B8A6"/></linearGradient></defs></svg>
 
 <header class="site-header">
   <div class="nav-inner">
-    <a class="wordmark" href="#hero">Client Powered</a>
+    <a class="wordmark" href="#hero"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="2" y="2" width="44" height="44" rx="12" class="mark-tile"/><path d="M33.9 16.6A11 11 0 1 0 35 23" fill="none" class="mark-ink" stroke-width="3.5" stroke-linecap="round"/><path d="M29.6 11.2l7.6 2.9-3.6 7.1z" class="mark-fill"/><path d="M19.4 24.2l3.6 3.6 7.2-7.7" fill="none" class="mark-ink" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Client Powered</a>
     <nav class="nav-links" aria-label="Primary">
       <a href="#what">What it does</a>
       <a href="#how">How it works</a>
@@ -468,13 +544,37 @@
       </div>
       <div class="mock-panel" aria-hidden="true">
         <span class="mock-tag">Example, not a real client</span>
-        <p class="mock-client">Example Client LLC</p>
-        <p class="mock-sub">Still waiting on:</p>
+        <div class="mock-head">
+          <span class="mock-avatar">EC</span>
+          <span class="mock-head-text">
+            <span class="mock-client">Example Client LLC</span>
+            <span class="mock-sub">Form 1120S, tax year 2025</span>
+          </span>
+        </div>
+        <div class="mock-progress">
+          <span class="mock-progress-top">
+            <span>Documents received</span><span class="mock-count">1 of 3</span>
+          </span>
+          <span class="mock-track"><span class="mock-fill"></span></span>
+        </div>
         <ul class="mock-list">
-          <li><span class="mock-box"></span> Bank statement, June</li>
-          <li><span class="mock-box"></span> Signed engagement letter</li>
-          <li><span class="mock-box checked"></span> <span class="mock-done">W-9</span></li>
+          <li>
+            <span class="mock-box"></span>
+            <span class="mock-item"><span class="mock-name">Bank statement, June</span><span class="mock-meta">Reminder sent 2 days ago</span></span>
+            <span class="mock-pill mock-pill-wait">Chasing</span>
+          </li>
+          <li>
+            <span class="mock-box"></span>
+            <span class="mock-item"><span class="mock-name">Signed engagement letter</span><span class="mock-meta">Next reminder Monday</span></span>
+            <span class="mock-pill mock-pill-wait">Chasing</span>
+          </li>
+          <li>
+            <span class="mock-box checked"></span>
+            <span class="mock-item"><span class="mock-name mock-done">W-9</span><span class="mock-meta">Uploaded by the client</span></span>
+            <span class="mock-pill mock-pill-done">Received</span>
+          </li>
         </ul>
+        <p class="mock-foot"><span class="mock-foot-dot"></span>Reminders stopped automatically for W-9</p>
       </div>
     </div>
   </section>
@@ -775,6 +875,7 @@
 
 <footer>
   <div class="wrap wide">
+    <a class="wordmark footer-wordmark" href="#hero"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="2" y="2" width="44" height="44" rx="12" class="mark-tile"/><path d="M33.9 16.6A11 11 0 1 0 35 23" fill="none" class="mark-ink" stroke-width="3.5" stroke-linecap="round"/><path d="M29.6 11.2l7.6 2.9-3.6 7.1z" class="mark-fill"/><path d="M19.4 24.2l3.6 3.6 7.2-7.7" fill="none" class="mark-ink" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Client Powered</a>
     <div class="footer-cta">
       <a class="btn" href="#waitlist">Request beta access</a>
     </div>
@@ -848,6 +949,69 @@ form.addEventListener("submit", async (e) => {
     status.textContent = "That didn't go through. Please try again, or email " + CONTACT + ".";
   }
 });
+</script>
+<script>
+(function () {
+  var root = document.documentElement;
+  if (!root.classList.contains("js-anim")) return;
+  var sel = "main section:not(#hero) > .wrap > .copy, main section:not(#hero) > .wrap > .photo," +
+            ".card, .integration-tile, .steps > li, .team-card, details, .cta-banner .wrap > *";
+  var items = [].slice.call(document.querySelectorAll(sel));
+
+  // A decorative effect must never be able to hide the page. If anything at all
+  // goes wrong, drop the class and every element returns to its normal state.
+  // The escape hatch must not depend on a transition completing: it writes the
+  // visible state directly, so a frozen or throttled frame loop cannot leave
+  // the page blank.
+  function showEverything() {
+    root.classList.remove("js-anim");
+    if (!items) return;
+    items.forEach(function (el) {
+      el.style.transition = "none";
+      el.style.transitionDelay = "0s";
+      el.style.opacity = "1";
+      el.style.transform = "none";
+    });
+  }
+  if (!items.length || !("IntersectionObserver" in window)) { showEverything(); return; }
+
+  try {
+    items.forEach(function (el) {
+      var sibs = [].slice.call(el.parentNode.children).filter(function (s) { return items.indexOf(s) > -1; });
+      var i = sibs.indexOf(el);
+      if (i > 0) el.style.transitionDelay = Math.min(i, 5) * 70 + "ms";
+    });
+
+    // This flag tracks the OBSERVER, not the reveal. Browsers invoke this
+    // callback once per target right after observe(), so if it never runs at
+    // all the observer is throttled or broken and the failsafe must trigger.
+    var ioAlive = false;
+    var io = new IntersectionObserver(function (entries) {
+      ioAlive = true;
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+    items.forEach(function (el) { io.observe(el); });
+
+    // Anything already at or above the fold reveals without waiting.
+    function sweep() {
+      items.forEach(function (el) {
+        if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add("is-in");
+      });
+    }
+    sweep();
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "visible") sweep();
+    });
+
+    // Background tabs throttle IntersectionObserver. If nothing has revealed
+    // after four seconds, assume it is not going to and show the page.
+    setTimeout(function () { if (!ioAlive) showEverything(); }, 4000);
+  } catch (err) {
+    showEverything();
+  }
+})();
 </script>
 </body>
 </html>
