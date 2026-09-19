@@ -457,28 +457,37 @@
   }
 
   /* ---------- scroll reveal ---------- */
-  html.js-anim main section:not(#hero) > .wrap > .copy,
-  html.js-anim .card,
-  html.js-anim .integration-tile,
-  html.js-anim .steps > li,
-  html.js-anim .team-card,
-  html.js-anim details,
-  html.js-anim .cta-banner .wrap > * {
+  /* The list is wrapped so the hiding rule carries ZERO specificity beyond
+     html.js-anim. Unwrapped, ":not(#hero)" contributes ID-level specificity
+     and the hiding rule OUTRANKS .is-in, so adding .is-in does nothing and the
+     element stays invisible forever. Same for ".steps > li" and
+     ".cta-banner .wrap > *", which each carry an extra element or class. */
+  html.js-anim :where(
+    main section:not(#hero) > .wrap > .copy,
+    .card,
+    .integration-tile,
+    .steps > li,
+    .team-card,
+    details,
+    .cta-banner .wrap > *
+  ) {
     opacity: 0; transform: translateY(22px);
   }
   html.js-anim .is-in {
-    opacity: 1; transform: none;
+    opacity: 1 !important; transform: none !important;
     transition: opacity .6s ease, transform .6s cubic-bezier(.22,.72,.3,1);
   }
 
   @media (prefers-reduced-motion: reduce) {
-    html.js-anim main section:not(#hero) > .wrap > .copy,
-    html.js-anim .card,
-    html.js-anim .integration-tile,
-    html.js-anim .steps > li,
-    html.js-anim .team-card,
-    html.js-anim details,
-    html.js-anim .cta-banner .wrap > * {
+    html.js-anim :where(
+      main section:not(#hero) > .wrap > .copy,
+      .card,
+      .integration-tile,
+      .steps > li,
+      .team-card,
+      details,
+      .cta-banner .wrap > *
+    ) {
       opacity: 1 !important; transform: none !important;
     }
   }
