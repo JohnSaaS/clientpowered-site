@@ -1030,7 +1030,7 @@ form.addEventListener("submit", async (e) => {
     if (res.status === 201 || res.status === DUPLICATE_CODE) {
       form.replaceChildren(Object.assign(document.createElement("p"), {
         className: "thanks",
-        textContent: "You're on the list. We'll email you when Client Powered is ready.",
+        textContent: "Thanks. You're on the list, and we'll be in touch about beta access.",
       }));
       return;
     }
