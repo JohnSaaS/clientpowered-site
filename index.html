@@ -205,6 +205,7 @@
     width: 100%; height: auto; display: block;
     border-radius: var(--radius); box-shadow: var(--shadow-lg);
     aspect-ratio: 3 / 2; object-fit: cover;
+    background: linear-gradient(135deg, var(--surface-3), var(--surface-2));
   }
 
   /* ---------- cards ---------- */
@@ -457,7 +458,6 @@
 
   /* ---------- scroll reveal ---------- */
   html.js-anim main section:not(#hero) > .wrap > .copy,
-  html.js-anim main section:not(#hero) > .wrap > .photo,
   html.js-anim .card,
   html.js-anim .integration-tile,
   html.js-anim .steps > li,
@@ -473,7 +473,6 @@
 
   @media (prefers-reduced-motion: reduce) {
     html.js-anim main section:not(#hero) > .wrap > .copy,
-    html.js-anim main section:not(#hero) > .wrap > .photo,
     html.js-anim .card,
     html.js-anim .integration-tile,
     html.js-anim .steps > li,
@@ -954,7 +953,9 @@ form.addEventListener("submit", async (e) => {
 (function () {
   var root = document.documentElement;
   if (!root.classList.contains("js-anim")) return;
-  var sel = "main section:not(#hero) > .wrap > .copy, main section:not(#hero) > .wrap > .photo," +
+  // Photos are deliberately NOT in this list. They are content, and a
+  // decorative reveal must never gate content behind JavaScript.
+  var sel = "main section:not(#hero) > .wrap > .copy," +
             ".card, .integration-tile, .steps > li, .team-card, details, .cta-banner .wrap > *";
   var items = [].slice.call(document.querySelectorAll(sel));
 
